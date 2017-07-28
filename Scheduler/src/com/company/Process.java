@@ -82,22 +82,25 @@ public class Process implements Comparable<Process>{
 
         this.complete = false;
 }
-
+    //Displays the process as a string
     @Override
     public String toString() {
         return "Process{PID:"+ processID+", AT:"+ arrivalTime +", BT:" + burstTime+", TimeLeft:" + timeLeft+", Priority:" + priority+"}\n";
     }
 
+
+    //used to sort, by using the switch statement, calling sort will sort the process corectly for the given algorithm picked
     @Override
     public int compareTo(Process o) {
         switch (algorithm){
             case 'f': return Integer.compare(this.arrivalTime,o.arrivalTime); // First come first serve
-            case 's': return Integer.compare(this.timeLeft,o.timeLeft);
-            case 'p': return Integer.compare(this.priority,o.priority);
-            case 'r': return Integer.compare(this.arrivalTime,o.arrivalTime);
-            case 'j': return Integer.compare(this.burstTime,o.burstTime);
-            case 'v': return Integer.compare(this.arrivalTime,o.arrivalTime);
+            case 's': return Integer.compare(this.timeLeft,o.timeLeft); // Shortest Remaining job
+            case 'p': return Integer.compare(this.priority,o.priority); //Priority
+            case 'r': return Integer.compare(this.arrivalTime,o.arrivalTime); //Round Robin Fixed
+            case 'j': return Integer.compare(this.burstTime,o.burstTime); //Shortest Job First
+            case 'v': return Integer.compare(this.arrivalTime,o.arrivalTime); //Round Robin Variable
         }
+        //other statment to satify java, the only options that algorithm can ever be are listed above.
         return Integer.compare(this.arrivalTime,o.arrivalTime);
     }
 }
