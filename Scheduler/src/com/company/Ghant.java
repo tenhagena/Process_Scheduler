@@ -1,6 +1,8 @@
 package com.company;
 
+import java.io.PrintStream;
 import java.util.ArrayList;
+import java.util.concurrent.TimeUnit;
 
 public class Ghant {
     private ArrayList<Integer> chart;
@@ -28,6 +30,35 @@ public class Ghant {
         chart = new ArrayList<Integer>();
     }
 
+    //displays the ghant chart with display
+    public void display() {
+        //get the string - the 0 at the start of the string
+        String output = this.toString().substring(1,this.toString().length());
+        String toPrint;
+        int printTo;
+        //Prints out the first 0 that we removed
+        System.out.print('0');
+        //while there are still process blocks to print
+        while(output.indexOf(']') >= 0) {
+            //get the substring of the time and brackets
+            printTo = output.indexOf(']');
+            toPrint = output.substring(0,printTo);
+            //update the string
+            output = output.substring(printTo + 1,output.length());
+            //print out the substing with the closing bracket
+            System.out.print(toPrint + ']');
+            //Delay
+            try {
+                TimeUnit.MILLISECONDS.sleep(1000 );
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+        }
+        //Display the final time
+        System.out.print(output);
+        //print a new line to move to next line
+        System.out.println();
+    }
 
 
 

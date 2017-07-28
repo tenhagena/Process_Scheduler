@@ -93,7 +93,7 @@ public class Scheduler {
         //print out Ghant chart from the results
         System.out.println("**********************************************************");
         System.out.println("                        Ghant Chart                       ");
-        System.out.println(result.toString());
+        result.display();
         System.out.println("**********************************************************");
 
         //Print out Wait time with proper formatting
