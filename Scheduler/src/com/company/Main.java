@@ -233,6 +233,7 @@ public class Main {
         boolean getNext = true;
         Process current = null;
         Ghant result = new Ghant();
+        Process temp = null;
 
         while(numToComplete > 0){
             currentQuantum++;
@@ -262,6 +263,11 @@ public class Main {
                     if(!fixed) {
                         getNext = true;
                     }
+                }
+                if(currentQuantum == quantum && current!= null){
+                    temp = current;
+                    processes.remove(current);
+                    processes.add(temp);
                 }
             }
             time++;
