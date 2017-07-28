@@ -1,5 +1,7 @@
 package com.company;
 
+import javax.print.DocFlavor;
+
 public class Process implements Comparable<Process>{
     //variable declaration
     private int priority;
@@ -85,7 +87,7 @@ public class Process implements Comparable<Process>{
     //Displays the process as a string
     @Override
     public String toString() {
-        return "Process{PID:"+ processID+", AT:"+ arrivalTime +", BT:" + burstTime+", TimeLeft:" + timeLeft+", Priority:" + priority+"}\n";
+        return String.format("PID:%d\tBurst Time:%d\tArival Time:%d \tWait Time:%d \tTurn Around Time:%d",processID,burstTime,arrivalTime,waitTime,turnAroundTime);
     }
 
 

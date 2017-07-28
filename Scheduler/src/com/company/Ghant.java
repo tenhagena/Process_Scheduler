@@ -85,7 +85,7 @@ public class Ghant {
         if(idle > 0){
             idlePercent = (double)idle/(double)time;
             nextOut = "*                  System usage:";
-            nextOut = nextOut.concat(Double.toString(1-idlePercent));
+            nextOut = nextOut.concat(String.format("%.2f%%",(1-idlePercent)*100));
             //fills end of sting with spaces to match formatting
             while(nextOut.length() < 57){
                 nextOut = nextOut.concat(" ");

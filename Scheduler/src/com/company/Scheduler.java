@@ -83,9 +83,15 @@ public class Scheduler {
         }
         averageTurnAround = averageTurnAround/processes.size();
         averageWaitTime = averageWaitTime/processes.size();
-
-        //print out Ghant chart from the results
+        //Prints the processes
         System.out.println("\n\n\n\n\n\n**********************************************************");
+        System.out.println("                      Processes Entered                   ");
+        for(Process p : processes){
+            System.out.println(p);
+        }
+        System.out.println("**********************************************************");
+        //print out Ghant chart from the results
+        System.out.println("**********************************************************");
         System.out.println("                        Ghant Chart                       ");
         System.out.println(result.toString());
         System.out.println("**********************************************************");
