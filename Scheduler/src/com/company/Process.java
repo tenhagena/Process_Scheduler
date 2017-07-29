@@ -14,6 +14,14 @@ public class Process implements Comparable<Process>{
     private int waitTime;
     private int turnAroundTime;
 
+    public char getAlgorithm() {
+        return algorithm;
+    }
+
+    public void setAlgorithm(char algorithm) {
+        this.algorithm = algorithm;
+    }
+
     //Getters and Setters
     public int getPriority() {
         return priority;
@@ -71,6 +79,12 @@ public class Process implements Comparable<Process>{
         complete = true;
         turnAroundTime = time;
         waitTime = turnAroundTime - arrivalTime - burstTime;
+    }
+    public void reset(){
+        this.timeLeft = this.burstTime;
+        this.complete = false;
+        this.waitTime = 0;
+        this.turnAroundTime = 0;
     }
 
     public Process(int arrivalTime, int burstTime, int priority, int processID, char algorithm) {

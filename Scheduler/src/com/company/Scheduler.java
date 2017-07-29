@@ -11,9 +11,11 @@ public class Scheduler {
 
     public static void main(String[] args) {
         //Variable declaration
-        ArrayList<Process> processes = new ArrayList<Process>();
+        ArrayList<Process> processes = null;
         int numProcesses = 0;
         char choice = ' ';
+        char again = 'y';
+        boolean repeat = true;
         int quantum = 0;
         boolean doOver = true;
         double averageTurnAround = 0;
@@ -35,58 +37,77 @@ public class Scheduler {
 
         //Begin user input
         welcomeMessege();
+
         //get number of processes
         System.out.println(processPromt);
         numProcesses = scanner.nextInt();
+        while(repeat){
         //Get algorithm
-        while(doOver) { //displays options until a valid option is picked
+        while (doOver) { //displays options until a valid option is picked
             System.out.println(algorithmPromt);
             choice = scanner.next().toLowerCase().charAt(0);
-            if((options.indexOf(choice)) >= 0) {
+            if ((options.indexOf(choice)) >= 0) {
                 doOver = false;
                 if (roundRobin.indexOf(choice) >= 0) {
                     System.out.println(quantumPromt);
                     quantum = scanner.nextInt();
                 }
-            }else{
+            } else {
                 System.out.println(errorPromt);
-                }
+            }
 
         }
-        if(choice == 'p'){
-           processes =  readProcesses(true,numProcesses,choice);
-        }else {
-           processes =  readProcesses(false, numProcesses,choice);
+        if(processes == null) {
+            if (choice == 'p') {
+                processes = readProcesses(true, numProcesses, choice);
+            } else {
+                processes = readProcesses(false, numProcesses, choice);
+            }
+        }else{
+            if (choice == 'p' && processes.get(0).getAlgorithm() != 'p'){
+                for(Process p : processes){
+                    System.out.printf("************Enter the priority of Process %d *************",p.getProcessID());
+                    p.setPriority(scanner.nextInt());
+                    p.setAlgorithm(choice);
+                    p.reset();
+                }
+            }else{
+                for(Process p : processes){
+                    p.setAlgorithm(choice);
+                    p.reset();
+                }
+            }
+
         }
         //Sorts algorithm in the correct order
         //System.out.println(processes);
         Collections.sort(processes);
         //System.out.println(processes);
-        if(preemptive.indexOf(choice) >= 0){
+        if (preemptive.indexOf(choice) >= 0) {
             //for preemptive algorithms (Priority, SRT)
             result = preemptiveSim(processes);
-        }else if(nonPreemptive.indexOf(choice) >= 0){
+        } else if (nonPreemptive.indexOf(choice) >= 0) {
             //for non-preemptive algorithms (FCFS,SJF)
             result = nonPreemptiveSim(processes);
-        }else{
+        } else {
             //for Round Robin algorithms
-            if(choice == 'v') {
-                result = roundRobinSim(processes, quantum,false );
-            }else{
+            if (choice == 'v') {
+                result = roundRobinSim(processes, quantum, false);
+            } else {
                 result = roundRobinSim(processes, quantum, true);
             }
         }
         //calculate average wait and turn around time
-        for(Process p : processes){
+        for (Process p : processes) {
             averageTurnAround += p.getTurnAroundTime();
             averageWaitTime += p.getWaitTime();
         }
-        averageTurnAround = averageTurnAround/processes.size();
-        averageWaitTime = averageWaitTime/processes.size();
+        averageTurnAround = averageTurnAround / processes.size();
+        averageWaitTime = averageWaitTime / processes.size();
         //Prints the processes
         System.out.println("\n\n\n\n\n\n**********************************************************");
         System.out.println("                      Processes Entered                   ");
-        for(Process p : processes){
+        for (Process p : processes) {
             System.out.println(p);
         }
         System.out.println("**********************************************************");
@@ -98,22 +119,32 @@ public class Scheduler {
 
         //Print out Wait time with proper formatting
         System.out.println("**********************************************************");
-        nextOut = "*                    WT:";
+        nextOut = "*                 Average Wait Time:";
         nextOut = nextOut.concat(Double.toString(averageWaitTime));
-        while(nextOut.length() < 57){
+        while (nextOut.length() < 57) {
             nextOut = nextOut.concat(" ");
         }
         nextOut = nextOut.concat("*");
         System.out.println(nextOut);
         //Print out Turn Around time with proper formatting
-        nextOut = "*                   TAT:";
+        nextOut = "*             Average Turn Around Time:";
         nextOut = nextOut.concat(Double.toString(averageTurnAround));
-        while(nextOut.length() < 57){
+        while (nextOut.length() < 57) {
             nextOut = nextOut.concat(" ");
         }
         nextOut = nextOut.concat("*");
         System.out.println(nextOut);
         System.out.println("**********************************************************");
+
+        System.out.println("*            Would you like to run a different           *\n*                  On these Processes(Y/N)               *");
+        System.out.println("**********************************************************");
+        again = scanner.next().toLowerCase().charAt(0);
+        repeat = ((again == 'y') ? true : false);
+        averageTurnAround = 0;
+        averageWaitTime = 0;
+        doOver = true;
+    }
+
 
     }
 
