@@ -24,7 +24,7 @@ public class Scheduler {
         Scanner scanner = new Scanner(System.in);
 
         String processPromt = "**********************************************************\n*Enter the number of processes you would like to Simulate*\n**********************************************************";
-        String algorithmPromt = "**********************************************************\n***Enter the Algorithm that you want to use to schedule***\n*                (F)irst come First serve                *\n*                  Shortest (J)ob first                  *\n*                       (P)riority                       *\n*                (S)hortest remaining job                *\n*                 Round Robin (V)ariable                 *\n*                   (R)ound Robin Fixed                  *\n**********************************************************";
+        String algorithmPromt = "**********************************************************\n*  Enter the Algorithm that you want to use to schedule  *\n*                (F)irst come First serve                *\n*                  Shortest (J)ob first                  *\n*                       (P)riority                       *\n*                (S)hortest remaining job                *\n*                 Round Robin (V)ariable                 *\n*                   (R)ound Robin Fixed                  *\n**********************************************************";
         String quantumPromt = "**********************************************************\n*              Please enter a Quantum Value              *\n**********************************************************";
         String errorPromt = "**********************************************************\n*               Please enter a valid option              *\n**********************************************************";
 
@@ -152,7 +152,7 @@ public class Scheduler {
         System.out.println(nextOut);
         System.out.println("**********************************************************");
 
-        System.out.println("*            Would you like to run a different           *\n*                  On these Processes(Y/N)               *");
+        System.out.println("*            Would you like to run a different           *\n*            algorithm on these Processes(Y/N)           *");
         System.out.println("**********************************************************");
         again = scanner.next().toLowerCase().charAt(0);
         //if choice = y then true, else false
