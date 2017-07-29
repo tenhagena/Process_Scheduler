@@ -67,8 +67,12 @@ public class Scheduler {
             }
             //For other times through
         }else{
-            //if the process before didnt ask for priority
-            if (choice == 'p' && processes.get(0).getAlgorithm() != 'p'){
+            //if priority, assign priority to processes
+            if (choice == 'p'){
+                for(Process p : processes){
+                    p.setAlgorithm(' ');
+                }
+                Collections.sort(processes);
                 for(Process p : processes){
                     System.out.printf("************Enter the priority of Process %d *************\n",p.getProcessID());
                     p.setPriority(scanner.nextInt());
@@ -110,6 +114,12 @@ public class Scheduler {
         }
         averageTurnAround = averageTurnAround / processes.size();
         averageWaitTime = averageWaitTime / processes.size();
+        for(Process p : processes){
+            p.setAlgorithm(' ');
+        }
+        //Sorts processes by PID
+        Collections.sort(processes);
+
         //Prints the processes
         System.out.println("\n\n\n\n\n\n**********************************************************");
         System.out.println("                      Processes Entered                   ");

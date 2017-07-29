@@ -117,6 +117,6 @@ public class Process implements Comparable<Process>{
             case 'v': return Integer.compare(this.arrivalTime,o.arrivalTime); //Round Robin Variable
         }
         //other statment to satify java, the only options that algorithm can ever be are listed above.
-        return Integer.compare(this.arrivalTime,o.arrivalTime);
+        return Integer.compare(this.processID,o.processID);
     }
 }

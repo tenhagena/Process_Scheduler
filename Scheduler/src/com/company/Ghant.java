@@ -49,7 +49,8 @@ public class Ghant {
             System.out.print(toPrint + ']');
             //Delay
             try {
-                TimeUnit.MILLISECONDS.sleep(1000 );
+                TimeUnit.MILLISECONDS.sleep(900 );
+
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }
