@@ -4,7 +4,7 @@ package com.company;
 import java.util.ArrayList;
 import java.util.concurrent.TimeUnit;
 
-public class Ghant {
+public class Gantt {
     private ArrayList<Integer> chart;
     private int totalTime;
 
@@ -26,11 +26,11 @@ public class Ghant {
         this.totalTime = totalTime;
     }
 
-    public Ghant(){
+    public Gantt(){
         chart = new ArrayList<Integer>();
     }
 
-    //displays the ghant chart with display
+    //displays the gantt chart with display
     public void display() {
         //get the string - the 0 at the start of the string
         String output = this.toString().substring(1,this.toString().length());

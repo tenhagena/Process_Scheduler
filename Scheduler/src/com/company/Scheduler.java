@@ -23,7 +23,7 @@ public class Scheduler {
         double averageWaitTime = 0;
         double bestVal = Double.MAX_VALUE;
         char bestChar = ' ';
-        Ghant result;
+        Gantt result;
         Scanner scanner = new Scanner(System.in);
 
         String processPromt = "**********************************************************\n*Enter the number of processes you would like to Simulate*\n**********************************************************";
@@ -137,9 +137,9 @@ public class Scheduler {
             System.out.println(p);
         }
         System.out.println("**********************************************************");
-        //print out Ghant chart from the results
+        //print out Gantt chart from the results
         System.out.println("**********************************************************");
-        System.out.println("                        Ghant Chart                       ");
+        System.out.println("                        Gantt Chart                       ");
         result.display();
         System.out.println("**********************************************************");
 
@@ -263,13 +263,13 @@ public class Scheduler {
     }
 
     //runs a simulation for the preemptive algorithms (Priority, SRJ)
-    public static Ghant preemptiveSim(ArrayList<Process> processes){
+    public static Gantt preemptiveSim(ArrayList<Process> processes){
         //variable declaration
         int time = 0;
         boolean getNext = true;
         Process current = null;
         int numToComplete = processes.size();
-        Ghant result = new Ghant();
+        Gantt result = new Gantt();
 
         //while there are still processes to run
         while(numToComplete > 0) {
@@ -284,7 +284,7 @@ public class Scheduler {
             if (current == null) {
                 result.addToChart(0);
             } else {
-                //adds its value to the ghant chart, decreases the time that is left to run
+                //adds its value to the gannt chart, decreases the time that is left to run
                 result.addToChart(current.getProcessID());
                 current.tick();
                 //if the process is complete, puts the completed time in the process and and sets the current process to null
@@ -303,12 +303,12 @@ public class Scheduler {
     }
 
     //runs a simulation for the non-preemptive algorithms (FCFS, SJF)
-    public static Ghant nonPreemptiveSim(ArrayList<Process> processes){
+    public static Gantt nonPreemptiveSim(ArrayList<Process> processes){
         //variable declaration
         int time = 0;
         boolean getNext = true;
         Process current = null;
-        Ghant result = new Ghant();
+        Gantt result = new Gantt();
         int numToComplete = processes.size();
 
         //while there are still processes to run
@@ -346,14 +346,14 @@ public class Scheduler {
     }
 
     //runs a simulation for the round robin algorithms (Variable, Fixed)
-    public static Ghant roundRobinSim(ArrayList<Process> processes, int quantum,boolean fixed){
+    public static Gantt roundRobinSim(ArrayList<Process> processes, int quantum, boolean fixed){
         //variable declaration
         int time = 0;
         int currentQuantum =1;
         int numToComplete = processes.size();
         boolean getNext = true;
         Process current = null;
-        Ghant result = new Ghant();
+        Gantt result = new Gantt();
         Process temp = null;
         //while there are still processes to complete
         while(numToComplete > 0){
