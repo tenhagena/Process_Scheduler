@@ -1,9 +1,10 @@
-
-
+//***************************************
+//* Andrew Tenhagen
+//* Operating Systems COMP-3475-01
+//* Process Scheduler
+//* Created on July 27th 2017
+//***************************************
 package com.company;
-
-
-
 
 import java.util.*;
 
@@ -181,11 +182,11 @@ public class Scheduler {
         System.out.flush();
         System.out.println("**********************************************************");
         System.out.println("*    Hello and welcome to the all in one process         *");
-        System.out.println("*simulator created for the summer 2017 Operating         *");
-        System.out.println("*systems class taught by the wonderful and newly         *");
-        System.out.println("*AMERICAN Durga Suresh Meynon. In this program you       *");
-        System.out.println("*can see what its like to be the scheduler of process    *");
-        System.out.println("*in a system.                                            *");
+        System.out.println("* simulator created for the summer 2017 Operating        *");
+        System.out.println("* systems class taught by the wonderful and newly        *");
+        System.out.println("* AMERICAN Durga Suresh Meynon. In this program you      *");
+        System.out.println("* can see what its like to be the scheduler of process   *");
+        System.out.println("* in a system.                                           *");
         System.out.println("**********************************************************");
         System.out.println("**************Press the enter key to continue*************");
         System.out.println("**********************************************************");
@@ -199,10 +200,10 @@ public class Scheduler {
         Scanner scanner = new Scanner(System.in);
         System.out.println("**********************************************************");
         System.out.println("*    Thank you for using the scheduling program that I   *");
-        System.out.println("*have created, you can find the project on github at     *");
+        System.out.println("* have created, you can find the project on github at    *");
         System.out.println("*     https://github.com/tenhagena/Process_Scheduler     *");
-        System.out.println("*feedback would be appreciated on any existing bugs, or  *");
-        System.out.println("*if you think a new feature would be useful. Thank you!  *");
+        System.out.println("* feedback would be appreciated on any existing bugs, or *");
+        System.out.println("* if you think a new feature would be useful. Thank you! *");
         System.out.println("**********************************************************");
         System.out.println("****************Press the enter key to exit***************");
         System.out.println("**********************************************************");
