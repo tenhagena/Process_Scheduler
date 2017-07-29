@@ -20,6 +20,8 @@ public class Scheduler {
         boolean doOver = true;
         double averageTurnAround = 0;
         double averageWaitTime = 0;
+        double bestVal = Double.MAX_VALUE;
+        char bestChar = ' ';
         Ghant result;
         Scanner scanner = new Scanner(System.in);
 
@@ -114,10 +116,17 @@ public class Scheduler {
         }
         averageTurnAround = averageTurnAround / processes.size();
         averageWaitTime = averageWaitTime / processes.size();
+
+        //Sets the best values if the current algorithm runs with a better time than the previous best.
+        if(averageTurnAround + averageWaitTime < bestVal){
+            bestVal = averageTurnAround + averageWaitTime;
+            bestChar = processes.get(0).getAlgorithm();
+        }
+
+        //Sorts the Processes by PID before display
         for(Process p : processes){
             p.setAlgorithm(' ');
         }
-        //Sorts processes by PID
         Collections.sort(processes);
 
         //Prints the processes
@@ -151,7 +160,7 @@ public class Scheduler {
         nextOut = nextOut.concat("*");
         System.out.println(nextOut);
         System.out.println("**********************************************************");
-
+        System.out.println("*    So far the best algorithm is "+bestString(bestChar) + " *");
         System.out.println("*            Would you like to run a different           *\n*            algorithm on these Processes(Y/N)           *");
         System.out.println("**********************************************************");
         again = scanner.next().toLowerCase().charAt(0);
@@ -162,6 +171,7 @@ public class Scheduler {
         averageWaitTime = 0;
         doOver = true;
     }
+    goodByeMessege();
 
 
     }
@@ -183,6 +193,39 @@ public class Scheduler {
         System.out.flush();
 
 
+    }
+
+    public static void goodByeMessege(){
+        Scanner scanner = new Scanner(System.in);
+        System.out.println("**********************************************************");
+        System.out.println("*    Thank you for using the scheduling program that I   *");
+        System.out.println("*have created, you can find the project on github at     *");
+        System.out.println("*     https://github.com/tenhagena/Process_Scheduler     *");
+        System.out.println("*feedback would be appreciated on any existing bugs, or  *");
+        System.out.println("*if you think a new feature would be useful. Thank you!  *");
+        System.out.println("**********************************************************");
+        System.out.println("****************Press the enter key to exit***************");
+        System.out.println("**********************************************************");
+        scanner.nextLine();
+    }
+
+    //returns the full name of an algorithm based on the char passed in
+    public static String bestString(char algorithm){
+        switch (algorithm) {
+            case 'f':
+                return "First Come First Serve";
+            case 'j':
+                return "Shortest Job First    ";
+            case 'p':
+                return "Priority              ";
+            case 'r':
+                return "Round Robin Fixed     ";
+            case 'v':
+                return "Round Robin Variable  ";
+            case 's':
+                return "Shortest Remaining Job";
+        }
+        return "ERROR";
     }
 
     //Gets the array of processes that will be used in the Algorithms.
