@@ -41,6 +41,7 @@ public class Scheduler {
         //get number of processes
         System.out.println(processPromt);
         numProcesses = scanner.nextInt();
+        //used if the user wants to repeat the values for different algorithms
         while(repeat){
         //Get algorithm
         while (doOver) { //displays options until a valid option is picked
@@ -57,20 +58,25 @@ public class Scheduler {
             }
 
         }
+        //for first time through
         if(processes == null) {
             if (choice == 'p') {
                 processes = readProcesses(true, numProcesses, choice);
             } else {
                 processes = readProcesses(false, numProcesses, choice);
             }
+            //For other times through
         }else{
+            //if the process before didnt ask for priority
             if (choice == 'p' && processes.get(0).getAlgorithm() != 'p'){
                 for(Process p : processes){
-                    System.out.printf("************Enter the priority of Process %d *************",p.getProcessID());
+                    System.out.printf("************Enter the priority of Process %d *************\n",p.getProcessID());
                     p.setPriority(scanner.nextInt());
                     p.setAlgorithm(choice);
+                    //before running the algorithm, resets the counters and flags in the processes
                     p.reset();
                 }
+                //for other processes
             }else{
                 for(Process p : processes){
                     p.setAlgorithm(choice);
@@ -139,7 +145,9 @@ public class Scheduler {
         System.out.println("*            Would you like to run a different           *\n*                  On these Processes(Y/N)               *");
         System.out.println("**********************************************************");
         again = scanner.next().toLowerCase().charAt(0);
+        //if choice = y then true, else false
         repeat = ((again == 'y') ? true : false);
+        //resets the global variables
         averageTurnAround = 0;
         averageWaitTime = 0;
         doOver = true;
