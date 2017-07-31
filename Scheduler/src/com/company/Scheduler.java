@@ -273,9 +273,10 @@ public class Scheduler {
                     return returningValue;
                 }
             }else{
-                System.out.println("*                  Please enter a number                  *");
                 scanner.next();
             }
+            System.out.println("*                  Please enter a number                  *");
+
         }
     }
 
