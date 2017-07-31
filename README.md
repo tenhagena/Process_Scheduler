@@ -12,8 +12,9 @@ This project was created for the Summer 2017 Operating Systems course (comp 3475
 
 # Features!
 At the end of the processing, the full ghant chart is output to the console as well as the average wait and turn around times. If there is any idle time while processing, the CPU usage percentage will also show under the ghant chart. 
-Added delay to the output of the ghant chart
-Added rerun option
+<br />Added delay to the output of the ghant chart
+<br />Added rerun option
+<br />Added error checking on integer inputs
 ## Running
 After cloning the repository 
 ```sh
