@@ -43,7 +43,7 @@ public class Scheduler {
 
         //get number of processes
         System.out.println(processPromt);
-        numProcesses = getNumberWithCheck(scanner);
+        numProcesses = getNumberWithCheck(scanner,false);
         //used if the user wants to repeat the values for different algorithms
         while(repeat){
         //Get algorithm
@@ -54,7 +54,7 @@ public class Scheduler {
                 doOver = false;
                 if (roundRobin.indexOf(choice) >= 0) {
                     System.out.println(quantumPromt);
-                    quantum = getNumberWithCheck(scanner);
+                    quantum = getNumberWithCheck(scanner, false);
                 }
             } else {
                 System.out.println(errorPromt);
@@ -78,7 +78,7 @@ public class Scheduler {
                 Collections.sort(processes);
                 for(Process p : processes){
                     System.out.printf("************Enter the priority of Process %d *************\n", p.getProcessID());
-                    p.setPriority(getNumberWithCheck(scanner));
+                    p.setPriority(getNumberWithCheck(scanner, false));
                     p.setAlgorithm(choice);
 
                     //before running the algorithm, resets the counters and flags in the processes
@@ -244,14 +244,14 @@ public class Scheduler {
         for(int i = 0; i < numProcesses; i++){
             System.out.printf("***********************Process #%d ************************\n", currentID);
             System.out.println("**********Enter the arrival time of the process***********");
-            arrivalTime = getNumberWithCheck(scanner);
+            arrivalTime = getNumberWithCheck(scanner, true);
 
             System.out.println("***********Enter the burst time of the process************");
-            burstTime = getNumberWithCheck(scanner);
+            burstTime = getNumberWithCheck(scanner, false);
             //if priority is needed, get the value of its priority
             if(priorityNeeded){
                 System.out.println("************Enter the priority of the process*************");
-                priority = getNumberWithCheck(scanner);
+                priority = getNumberWithCheck(scanner, false);
             }
             System.out.println("**********************************************************");
             //Add process to the process pool
@@ -264,18 +264,18 @@ public class Scheduler {
     }
 
     //checks if the number input is a positive integer, used to manage bad input
-    public static int getNumberWithCheck(Scanner scanner){
+    public static int getNumberWithCheck(Scanner scanner,Boolean canBeZero){
         int returningValue = 0;
         while(true){
             if(scanner.hasNextInt()){
                 returningValue = scanner.nextInt();
-                if(returningValue >= 0){
+                if((returningValue >= 0 && canBeZero) ||(returningValue > 0) && !canBeZero){
                     return returningValue;
                 }
             }else{
                 scanner.next();
             }
-            System.out.println("*                  Please enter a number                  *");
+            System.out.println("*             Please enter a positive number             *");
 
         }
     }
