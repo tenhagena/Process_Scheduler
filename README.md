@@ -18,9 +18,9 @@ At the end of the processing, the full ghant chart is output to the console as w
 ## Running
 After cloning the repository 
 ```sh
-$ cd /Directory/of/repository/src/com/company/
-$ javac Scheduler.java Ghant.java Process.java
-$ java Scheduler
+$ cd /Directory/of/repository/
+$ javac src/com/company/*.java
+$ java com.company.Scheduler
 ```
 
 
