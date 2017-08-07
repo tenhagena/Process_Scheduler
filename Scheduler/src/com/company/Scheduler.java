@@ -185,7 +185,7 @@ public class Scheduler {
         System.out.println("*    Hello and welcome to the all in one process         *");
         System.out.println("* simulator created for the summer 2017 Operating        *");
         System.out.println("* systems class taught by the wonderful and newly        *");
-        System.out.println("* AMERICAN Durga Suresh Meynon. In this program you      *");
+        System.out.println("* AMERICAN Durga Suresh Meenan. In this program you      *");
         System.out.println("* can see what its like to be the scheduler of process   *");
         System.out.println("* in a system.                                           *");
         System.out.println("**********************************************************");
